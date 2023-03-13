@@ -2,7 +2,7 @@ FROM registry.redhat.io/ubi8
 MAINTAINER dan me@me.com
 
 # Add repo file
-ADD index.html.tar /var/www/html
+ADD index.tar /var/www/html
 
 # Install cool software
 RUN yum --assumeyes --nodocs update && \

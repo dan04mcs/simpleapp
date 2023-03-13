@@ -10,6 +10,5 @@ yum --assumeyes --nodocs install \
 nmap iproute httpd && \
 yum clean all
 
-USER root
 
-CMD ["httpd", "-D", "FOREGROUND"]
+CMD ["apachectl", "start"]

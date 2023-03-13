@@ -1,15 +1,13 @@
-FROM centos
-MAINTAINER Sander <mail@sandervanvugt.nl>
+FROM registry.redhat.io/ubi8
+MAINTAINER dan me@me.com
 
 # Add repo file
-ADD ./sander.repo /etc/yum.repos.d/
+ADD index.html.tar /var/www/html
 
 # Install cool software
-RUN yum --assumeyes update && \
-yum --assumeyes install \
-nmap iproute && \
-bash && \
+RUN yum --assumeyes --nodocs update && \
+yum --assumeyes --nodocs install \
+nmap iproute httpd && \
 yum clean all
 
-ENTRYPOINT ["/usr/bin/nmap"]
-CMD ["-sn", "172.17.0.0/24"] 
+CMD ["httpd", "-D", "FOREGROUND"]

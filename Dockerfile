@@ -8,9 +8,9 @@ ADD index.tar /var/www/html
 RUN yum --assumeyes --nodocs update && \
 yum --assumeyes --nodocs install \
 nmap iproute httpd && \
-chown apache:apache /var/www/html/index.html && \
-yum clean all
+yum clean all && \
+chown apache:apache /run/httpd.pid
 
-USER apache
+
 
 CMD ["httpd", "-D", "FOREGROUND"]
